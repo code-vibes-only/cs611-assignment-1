@@ -27,6 +27,10 @@ The data is not stored in Git. After cloning, copy the four files into `data/`:
 
 `data/` and the generated `datamart/` folder are both listed in `.gitignore`.
 
+## Source inventory
+
+`notebooks/01_source_inventory.ipynb` examines the raw data files for size, candidate keys, date coverage and obvious data-quality problems.
+
 ## Status
 
 Environment and source inventory; pipeline not yet implemented.
