@@ -216,3 +216,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project-specific
+data/
+datamart/
+*.zip
+.DS_Store
+Assignment 1.pdf
+.Trash-0/
