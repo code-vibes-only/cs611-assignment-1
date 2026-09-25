@@ -1,0 +1,13 @@
+name: cs611-a1
+
+services:
+  jupyter:
+    build: .
+    container_name: cs611_a1_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    command: ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--notebook-dir=/app"]
