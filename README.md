@@ -27,10 +27,8 @@ The data is not stored in Git. After cloning, copy the four files into `data/`:
 
 `data/` and the generated `datamart/` folder are both listed in `.gitignore`.
 
-## Source inventory
+## Exploratory data analysis
 
-`notebooks/01_source_inventory.ipynb` examines the raw data files for size, candidate keys, date coverage and obvious data-quality problems.
-
-## Status
-
-Environment and source inventory; pipeline not yet implemented.
+- `notebooks/01_source_inventory.ipynb` examines the raw data files for size, candidate keys, date coverage and obvious data-quality problems.
+- `notebooks/02_data_quality.ipynb`: values that are not numbers, placeholders, impossible ranges, categories and identifiers in the attributes and financials tables.
+- `notebooks/03_sources_and_timing.ipynb`: which customers each file holds, when each snapshot is taken relative to the loan start, clickstream coverage, and the Lab 2 label on this data.
