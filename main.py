@@ -1,7 +1,9 @@
 import os
 from datetime import datetime
 import pyspark
+
 import utils.data_processing_bronze_table
+import utils.data_processing_silver_table
 
 # Initialize SparkSession
 spark = pyspark.sql.SparkSession.builder \
@@ -43,10 +45,22 @@ sources = {
 }
 dates = {name: generate_first_of_month_dates(start, end) for name, (_, start, end) in sources.items()}
 
-# bronze: raw values, one partition per source and month
+# create bronze datalake
 for name, (source_csv, _, _) in sources.items():
     bronze_directory = make_directory(f"datamart/bronze/{name}/")
     for date_str in dates[name]:
         utils.data_processing_bronze_table.process_bronze_table(date_str, source_csv, name, bronze_directory, spark)
+
+# create silver datalake
+silver_functions = {
+    "attributes": utils.data_processing_silver_table.process_silver_attributes_table,
+    "financials": utils.data_processing_silver_table.process_silver_financials_table,
+    "clickstream": utils.data_processing_silver_table.process_silver_clickstream_table,
+    "loan_daily": utils.data_processing_silver_table.process_silver_loan_table,
+}
+for name, process_silver_table in silver_functions.items():
+    silver_directory = make_directory(f"datamart/silver/{name}/")
+    for date_str in dates[name]:
+        process_silver_table(date_str, f"datamart/bronze/{name}/", silver_directory, spark)
 
 spark.stop()
