@@ -34,7 +34,23 @@ application, dated to the application month, and a label store with one row per 
 - `notebooks/05_datamart_checks.ipynb` used to check datamart for issues.
 
 ## Pipeline
-- `python main.py` builds the datamart in layers, following the medallion architecture.
-- `utils/data_processing_bronze_table.py` is called by `python main.py` to build the bronze layer.
-- `utils/data_processing_silver_table.py` is called by `python main.py` to build the silver layer.
-- `utils/data_processing_gold_table.py` is called by `python main.py` to build the gold layer.
+- `python main.py` builds the datamart in layers, following the medallion architecture
+- `utils/data_processing_bronze_table.py` is called by `python main.py` to build the bronze layer
+- `utils/data_processing_silver_table.py` is called by `python main.py` to build the silver layer
+- `utils/data_processing_gold_table.py` is called by `python main.py` to build the gold layer
+
+## How to run
+1. Put the four CSV files in `data/` (see above)
+2. Build and start the environment:
+   ```sh
+   docker-compose build
+   docker-compose up
+   ```
+3. Open the `http://127.0.0.1:8888/lab?token=...` link that `docker-compose up`
+   prints
+4. In JupyterLab, open a terminal and run:
+   ```sh
+   python main.py
+   ```
+   This builds `datamart/bronze`, `datamart/silver` and `datamart/gold` in
+   about a minute. Rerunning it replaces the output
