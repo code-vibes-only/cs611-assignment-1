@@ -37,3 +37,4 @@ application, dated to the application month, and a label store with one row per 
 - `python main.py` builds the datamart in layers, following the medallion architecture.
 - `utils/data_processing_bronze_table.py` is called by `python main.py` to build the bronze layer.
 - `utils/data_processing_silver_table.py` is called by `python main.py` to build the silver layer.
+- `utils/data_processing_gold_table.py` is called by `python main.py` to build the gold layer.
