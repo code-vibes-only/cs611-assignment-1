@@ -32,6 +32,7 @@ The data is not stored in Git. After cloning, copy the four files into `data/`:
 - `notebooks/04_prediction_time.ipynb` traces one applicant from application to label and defines the gold tables: a feature store with one row per loan
 application, dated to the application month, and a label store with one row per loan, labelled 30+ days past due at month on book 6 (Lab 2's definition). Features use only information available at application.
 - `notebooks/05_datamart_checks.ipynb` used to check datamart for issues.
+- `notebooks/06_model_check.ipynb` trains a logistic regression on the gold stores to check that they can feed a classifier (the model itself is not part of the pipeline).
 
 ## Pipeline
 - `python main.py` builds the datamart in layers, following the medallion architecture
