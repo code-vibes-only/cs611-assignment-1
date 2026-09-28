@@ -32,3 +32,5 @@ The data is not stored in Git. After cloning, copy the four files into `data/`:
 - `notebooks/01_source_inventory.ipynb` examines the raw data files for size, candidate keys, date coverage and obvious data-quality problems.
 - `notebooks/02_data_quality.ipynb`: values that are not numbers, placeholders, impossible ranges, categories and identifiers in the attributes and financials tables.
 - `notebooks/03_sources_and_timing.ipynb`: which customers each file holds, when each snapshot is taken relative to the loan start, clickstream coverage, and the Lab 2 label on this data.
+- `notebooks/04_prediction_time.ipynb` traces one applicant from application to label and defines the gold tables: a feature store with one row per loan
+application, dated to the application month, and a label store with one row per loan, labelled 30+ days past due at month on book 6 (Lab 2's definition). Features use only information available at application.
