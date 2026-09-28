@@ -1,6 +1,5 @@
 # CS611 Assignment 1: Loan default data pipeline
 
-
 ## Context
 You are a data scientist working at a financial institute (e.g. bank). Your company lends money to users in the form of cash loans. You are tasked to eventually build a machine learning model that can predict whether a user will default on their loan at the point of loan application. For this assignment, you will be preparing the data through production data pipelines in preparation for machine learning model training (in the next assignment). You have 2 tasks: prepare the feature and label data stores compliant to the Medallion Architecture, and prepare a presentation deck (max 10 slides) to present to your manager, other engineers and business users of what tables you will create under which parts of the Medallion Architecture.
 
@@ -32,9 +31,9 @@ The data is not stored in Git. After cloning, copy the four files into `data/`:
 - `notebooks/03_sources_and_timing.ipynb`: which customers each file holds, when each snapshot is taken relative to the loan start, clickstream coverage, and the Lab 2 label on this data.
 - `notebooks/04_prediction_time.ipynb` traces one applicant from application to label and defines the gold tables: a feature store with one row per loan
 application, dated to the application month, and a label store with one row per loan, labelled 30+ days past due at month on book 6 (Lab 2's definition). Features use only information available at application.
-
+- `notebooks/05_datamart_checks.ipynb` used to check datamart for issues.
 
 ## Pipeline
 - `python main.py` builds the datamart in layers, following the medallion architecture.
 - `utils/data_processing_bronze_table.py` is called by `python main.py` to build the bronze layer.
-- `notebooks/05_datamart_checks.ipynb` checks datamart for issues.
+- `utils/data_processing_silver_table.py` is called by `python main.py` to build the silver layer.
